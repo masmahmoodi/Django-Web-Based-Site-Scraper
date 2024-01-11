@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    
+  
+
+<div class="container">
+
+  <div class="row">
+      <div class="col-md-4 offset-md-3">
+        <h2>Link Collector</h2>
+      </div>
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-md-4">
+          <form action="" method="POST" >
+               {% csrf_token %}
+               <input type="text" name="site" class="form-control">
+              </div>
+              <div class="col-md-1">
+                <button class="btn btn-info" type="submit">Scrape</button>
+            </div>
+          </form>
+          
+          <div class="col-md-7">
+            <a href="{% url 'clear' %}" class="btn btn-danger">Delete</a>
+          </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-8">
+        <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for string in links %}
+                  <tr>
+                    <td>{{string.id}}</td>
+                    <td>{{string.name}}</td>
+                    <td>{{string.link}}</td>
+                  </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+    
+
+</body>
+</html>
